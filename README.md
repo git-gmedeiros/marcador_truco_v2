@@ -19,7 +19,7 @@ Aplicativo para marcar os pontos no jogo de truco criado para disciplina de Prog
 
 ## Licença
 
-    Copyright 2019 Kleber de Oliveira Andrade
+    Copyright 2019 Guilherme Fagundes Medeiros
     
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
