@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:marcador_truco_v2/models/player.dart';
+import 'package:screen/screen.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -9,6 +10,9 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   //var playerOne = Player(name: "Nós", score: 0, victories: 0);
   //var playerTwo = Player(name: "Eles", score: 0, victories: 0);
+
+  Color corBotao = Colors.black;
+  bool tela = false;
 
   List<Player> _players = [
     Player(name: "Nós", score: 0, victories: 0),
@@ -44,6 +48,27 @@ class _HomePageState extends State<HomePage> {
         actions: <Widget>[
           IconButton(
             onPressed: () {
+              if (tela) {
+                setState(() {
+                  Screen.keepOn(false);
+                  tela = false;
+                  corBotao = Colors.black;
+                });
+              } else {
+                setState(() {
+                  Screen.keepOn(true);
+                  tela = true;
+                  corBotao = Colors.white;
+                });
+              }
+            },
+            icon: Icon(
+              Icons.wb_sunny,
+              color: corBotao,
+            ),
+          ),
+          IconButton(
+            onPressed: () {
               _showDialog(
                   title: 'Zerar pontuação',
                   message:
@@ -64,7 +89,7 @@ class _HomePageState extends State<HomePage> {
                   });
             },
             icon: Icon(Icons.refresh),
-          )
+          ),
         ],
       ),
       body: Container(padding: EdgeInsets.all(20.0), child: _showPlayers()),
@@ -148,7 +173,7 @@ class _HomePageState extends State<HomePage> {
                     setState(() {
                       player.name = _nameController.text;
                     });
-                      _nameController.text = "";
+                    _nameController.text = "";
                   }
                 },
               ),
